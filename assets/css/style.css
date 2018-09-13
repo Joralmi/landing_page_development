@@ -1407,8 +1407,8 @@ Tweeter feeds style
 Footer style
 */
 .footer {
-  padding-top: 90px;
-  padding-bottom: 70px;
+  padding-top: 30px;
+  padding-bottom: 10px;
   background-color: #fff; }
   .footer h5 {
     font-family: "Lato", sans-serif;
@@ -1446,7 +1446,7 @@ Footer style
     position: relative;
     z-index: 3;
     background-color: #fff;
-    margin-bottom: 420px;
+    margin-bottom: 80px;
     box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.1); } }
 
 @media (max-width: 991px) {

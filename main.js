@@ -23,6 +23,70 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 
 /***/ }),
 
+/***/ "./src/app/_services/httprequest.service.ts":
+/*!**************************************************!*\
+  !*** ./src/app/_services/httprequest.service.ts ***!
+  \**************************************************/
+/*! exports provided: httprequestService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "httprequestService", function() { return httprequestService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var httprequestService = /** @class */ (function () {
+    function httprequestService(http) {
+        this.http = http;
+    }
+    httprequestService.prototype.sendGet = function (url) {
+        return this.http.get('https://vicinity.bavenir.eu:3000/api/' + url)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (response) {
+            // console.log(response)
+            return response;
+        }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
+    };
+    httprequestService.prototype.handleError = function (error) {
+        if (error.error instanceof ErrorEvent) {
+            // A client-side or network error occurred. Handle it accordingly.
+            console.error('An error occurred:', error.error.message);
+        }
+        else {
+            // The backend returned an unsuccessful response code.
+            // The response body may contain clues as to what went wrong,
+            console.error("Backend returned code " + error.status + ", " +
+                ("body was: " + error.error));
+        }
+        // return an observable with a user-facing error message
+        return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["throwError"])({ error: true });
+    };
+    ;
+    httprequestService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
+        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
+    ], httprequestService);
+    return httprequestService;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/_templates/documentation/documentation.component.css":
 /*!**********************************************************************!*\
   !*** ./src/app/_templates/documentation/documentation.component.css ***!
@@ -293,7 +357,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<section id='kpis' class='pt90 pb50 bg-faded'>\n    <div class='container'>\n\n      <h6 class=\"text-dark-gray text-center\">Usage statistics</h6>\n      <h3 class=\"text-center title-font mb90\">Highlights</h3>\n\n        <div class='row'>\n            <div class='col-lg-3 col-md-6 mb40 text-center feature-icon wow fadeInUp' data-wow-delay='.1s'>\n                <i class='icon-user'></i>\n                <h4>+50 Organisations</h4>\n                <p>\n                    With more than 200 users, and 50 active at the moment\n                </p>\n            </div><!--col-->\n            <div class='col-lg-3 col-md-6 mb40 text-center feature-icon wow fadeInUp' data-wow-delay='.2s'>\n                <i class='icon-server'></i>\n                <h4>+100 IoT Infrastructures</h4>\n                <p>\n                    With more than 400 smart devices connected\n                </p>\n            </div><!--col-->\n            <div class='col-lg-3 col-md-6 mb40 text-center feature-icon wow fadeInUp' data-wow-delay='.3s'>\n                <i class='icon-graph'></i>\n                <h4>+200 services available</h4>\n                <p>\n                    To analyze and make your smart devices smarter\n                </p>\n            </div><!--col-->\n            <div class='col-lg-3 col-md-6 mb40 text-center feature-icon wow fadeInUp' data-wow-delay='.4s'>\n                <i class='icon-briefcase'></i>\n                <h4>+100 contracts</h4>\n                <p>\n                    Allowing our users to use services that will take the most of their infrastructure\n                </p>\n            </div><!--col-->\n        </div>\n    </div>\n</section><!--features-->\n"
+module.exports = "<section id='kpis' class='pt90 pb50 bg-faded'>\n    <div class='container bg-faded'>\n\n      <h6 class=\"text-dark-gray text-center\">Usage statistics</h6>\n      <h3 class=\"text-center title-font mb90\">Highlights</h3>\n\n        <div class='row'>\n            <div class='col-lg-3 col-md-6 mb40 text-center feature-icon wow fadeInUp' data-wow-delay='.1s'>\n                <i class='icon-user'></i>\n                <h4>{{statistics.organisations}} Organisations</h4>\n                <p>\n                    With {{statistics.users}} users connected\n                </p>\n            </div><!--col-->\n            <div class='col-lg-3 col-md-6 mb40 text-center feature-icon wow fadeInUp' data-wow-delay='.2s'>\n                <i class='icon-server'></i>\n                <h4>{{statistics.nodes}} IoT Infrastructures</h4>\n                <p>\n                    With {{statistics.devices}} smart devices connected\n                </p>\n            </div><!--col-->\n            <div class='col-lg-3 col-md-6 mb40 text-center feature-icon wow fadeInUp' data-wow-delay='.3s'>\n                <i class='icon-graph'></i>\n                <h4>{{statistics.services}} services available</h4>\n                <p>\n                    To analyze and make your smart devices smarter\n                </p>\n            </div><!--col-->\n            <div class='col-lg-3 col-md-6 mb40 text-center feature-icon wow fadeInUp' data-wow-delay='.4s'>\n                <i class='icon-briefcase'></i>\n                <h4>{{statistics.contracts}} contracts</h4>\n                <p>\n                    Allowing our users to use services that will take the most of their infrastructure\n                </p>\n            </div><!--col-->\n        </div>\n    </div>\n</section><!--features-->\n"
 
 /***/ }),
 
@@ -308,6 +372,7 @@ module.exports = "<section id='kpis' class='pt90 pb50 bg-faded'>\n    <div class
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "KpisComponent", function() { return KpisComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_httprequest_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../_services/httprequest.service */ "./src/app/_services/httprequest.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -318,10 +383,20 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var KpisComponent = /** @class */ (function () {
-    function KpisComponent() {
+    function KpisComponent(httpService) {
+        this.httpService = httpService;
+        this.statistics = {}; //   public items : object[] = [];
     }
     KpisComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.httpService.sendGet('public/statistics')
+            .subscribe(function (data) {
+            _this.statistics = data.message;
+        }, function (error) {
+            console.log(error);
+        });
     };
     KpisComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -329,7 +404,7 @@ var KpisComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./kpis.component.html */ "./src/app/_templates/kpis/kpis.component.html"),
             styles: [__webpack_require__(/*! ./kpis.component.css */ "./src/app/_templates/kpis/kpis.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_services_httprequest_service__WEBPACK_IMPORTED_MODULE_1__["httprequestService"]])
     ], KpisComponent);
     return KpisComponent;
 }());
@@ -395,69 +470,6 @@ var NavigationComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [])
     ], NavigationComponent);
     return NavigationComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/_templates/subscribe/subscribe.component.css":
-/*!**************************************************************!*\
-  !*** ./src/app/_templates/subscribe/subscribe.component.css ***!
-  \**************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ""
-
-/***/ }),
-
-/***/ "./src/app/_templates/subscribe/subscribe.component.html":
-/*!***************************************************************!*\
-  !*** ./src/app/_templates/subscribe/subscribe.component.html ***!
-  \***************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<section id=\"subscribe\" class=\"bg-parallax pt100 pb100\" data-jarallax='{\"speed\": 0.2}' style='background-image: url(\"images/bg3.jpg\")'>\n    <div class=\"parallax-overlay\"></div>\n    <div class=\"container\">\n        <div class=\"row\">\n            <div class=\"col-lg-10 mr-auto ml-auto text-center\">\n                <h6 class=\"text-white-gray text-center\">Subscribe to our Newsletter and get benefits</h6>\n                <h3 class=\"text-center text-white title-font mb50\">Subscribe Now</h3>\n                <form>\n                    <div class=\"row\">\n                        <div class=\"col-md-4\">\n                            <input type=\"text\" class=\"form-control\" placeholder=\"Name\" required=\"\">\n                        </div>\n                        <div class=\"col-md-4\">\n                            <input type=\"email\" class=\"form-control\" placeholder=\"Email\" required=\"\">\n                        </div>\n                        <div class=\"col-md-4\">\n                            <button type=\"submit\" class=\"btn btn-primary btn-block\">Subscribe</button>\n                        </div>\n                    </div>\n\n                    <div class=\"text-center pt20\">\n                        <label class=\"custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0\">\n                            <input type=\"checkbox\" class=\"custom-control-input\">\n                            <span class=\"custom-control-indicator\"></span>\n                            <span class=\"custom-control-description\">Accept our <a href=\"#\" class=\"text-white\">Terms &amp; Conditions</a></span>\n                        </label>\n                    </div>\n                </form>\n            </div>\n        </div>\n    </div>\n</section>\n"
-
-/***/ }),
-
-/***/ "./src/app/_templates/subscribe/subscribe.component.ts":
-/*!*************************************************************!*\
-  !*** ./src/app/_templates/subscribe/subscribe.component.ts ***!
-  \*************************************************************/
-/*! exports provided: SubscribeComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SubscribeComponent", function() { return SubscribeComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-var SubscribeComponent = /** @class */ (function () {
-    function SubscribeComponent() {
-    }
-    SubscribeComponent.prototype.ngOnInit = function () {
-    };
-    SubscribeComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-subscribe',
-            template: __webpack_require__(/*! ./subscribe.component.html */ "./src/app/_templates/subscribe/subscribe.component.html"),
-            styles: [__webpack_require__(/*! ./subscribe.component.css */ "./src/app/_templates/subscribe/subscribe.component.css")]
-        }),
-        __metadata("design:paramtypes", [])
-    ], SubscribeComponent);
-    return SubscribeComponent;
 }());
 
 
@@ -597,7 +609,7 @@ var WhyusComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".to-bottom{\n  position: absolute;\n  bottom: 0;\n}\n\n.to-front{\n  z-index: 1000;\n}\n"
+module.exports = ".to-bottom{\n  position: absolute;\n  bottom: 0;\n}\n\n.to-front{\n  z-index: 1000;\n}\n\n.footer-custom{\n  padding-top: 50px;\n  padding-bottom: 30px;\n  background-color: #fff;\n}\n"
 
 /***/ }),
 
@@ -608,7 +620,7 @@ module.exports = ".to-bottom{\n  position: absolute;\n  bottom: 0;\n}\n\n.to-fro
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"preloader\">\n    <div id=\"preloader-inner\"></div>\n</div><!--/preloader-->\n\n<!-- Navigation menu -->\n  <app-navigation></app-navigation>\n\n<!-- Default view -->\n  <app-home></app-home>\n\n<!-- All views -->\n<main class=\"main-content\">\n    <app-kpis></app-kpis>\n    <app-whyus></app-whyus>\n    <app-integration></app-integration>\n    <app-users></app-users>\n    <app-documentation></app-documentation>\n    <!-- <app-subscribe></app-subscribe> -->\n\n    <footer class=\"footer bg-faded border border-dark to-front\">\n      <app-footer></app-footer>\n    </footer>\n\n</main><!--main-content-->\n\n<!--back to top-->\n<a href=\"#\" class=\"back-to-top\" id=\"back-to-top\"><i class=\"icon-chevron-up\"></i></a>\n"
+module.exports = "<div id=\"preloader\">\n    <div id=\"preloader-inner\"></div>\n</div><!--/preloader-->\n\n<!-- Navigation menu -->\n  <app-navigation></app-navigation>\n\n<!-- Default view -->\n  <app-home></app-home>\n\n<!-- All views -->\n<main class=\"main-content\">\n    <app-kpis></app-kpis>\n    <app-whyus></app-whyus>\n    <app-integration></app-integration>\n    <app-users></app-users>\n    <app-documentation></app-documentation>\n</main><!--main-content-->\n\n<footer class=\"footer-custom\">\n  <app-footer></app-footer>\n</footer>\n\n<!--back to top-->\n<a href=\"#\" class=\"back-to-top\" id=\"back-to-top\"><i class=\"icon-chevron-up\"></i></a>\n"
 
 /***/ }),
 
@@ -660,16 +672,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppModule", function() { return AppModule; });
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _templates_footer_footer_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_templates/footer/footer.component */ "./src/app/_templates/footer/footer.component.ts");
-/* harmony import */ var _templates_whyus_whyus_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_templates/whyus/whyus.component */ "./src/app/_templates/whyus/whyus.component.ts");
-/* harmony import */ var _templates_home_home_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./_templates/home/home.component */ "./src/app/_templates/home/home.component.ts");
-/* harmony import */ var _templates_integration_integration_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./_templates/integration/integration.component */ "./src/app/_templates/integration/integration.component.ts");
-/* harmony import */ var _templates_documentation_documentation_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./_templates/documentation/documentation.component */ "./src/app/_templates/documentation/documentation.component.ts");
-/* harmony import */ var _templates_users_users_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./_templates/users/users.component */ "./src/app/_templates/users/users.component.ts");
-/* harmony import */ var _templates_subscribe_subscribe_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./_templates/subscribe/subscribe.component */ "./src/app/_templates/subscribe/subscribe.component.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _templates_footer_footer_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_templates/footer/footer.component */ "./src/app/_templates/footer/footer.component.ts");
+/* harmony import */ var _templates_whyus_whyus_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./_templates/whyus/whyus.component */ "./src/app/_templates/whyus/whyus.component.ts");
+/* harmony import */ var _templates_home_home_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./_templates/home/home.component */ "./src/app/_templates/home/home.component.ts");
+/* harmony import */ var _templates_integration_integration_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./_templates/integration/integration.component */ "./src/app/_templates/integration/integration.component.ts");
+/* harmony import */ var _templates_documentation_documentation_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./_templates/documentation/documentation.component */ "./src/app/_templates/documentation/documentation.component.ts");
+/* harmony import */ var _templates_users_users_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./_templates/users/users.component */ "./src/app/_templates/users/users.component.ts");
 /* harmony import */ var _templates_navigation_navigation_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./_templates/navigation/navigation.component */ "./src/app/_templates/navigation/navigation.component.ts");
 /* harmony import */ var _templates_kpis_kpis_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./_templates/kpis/kpis.component */ "./src/app/_templates/kpis/kpis.component.ts");
+/* harmony import */ var _services_httprequest_service__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./_services/httprequest.service */ "./src/app/_services/httprequest.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -688,28 +701,31 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"],
-                _templates_footer_footer_component__WEBPACK_IMPORTED_MODULE_3__["FooterComponent"],
-                _templates_whyus_whyus_component__WEBPACK_IMPORTED_MODULE_4__["WhyusComponent"],
-                _templates_home_home_component__WEBPACK_IMPORTED_MODULE_5__["HomeComponent"],
-                _templates_integration_integration_component__WEBPACK_IMPORTED_MODULE_6__["IntegrationComponent"],
-                _templates_documentation_documentation_component__WEBPACK_IMPORTED_MODULE_7__["DocumentationComponent"],
-                _templates_users_users_component__WEBPACK_IMPORTED_MODULE_8__["UsersComponent"],
-                _templates_subscribe_subscribe_component__WEBPACK_IMPORTED_MODULE_9__["SubscribeComponent"],
+                _app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"],
+                _templates_footer_footer_component__WEBPACK_IMPORTED_MODULE_4__["FooterComponent"],
+                _templates_whyus_whyus_component__WEBPACK_IMPORTED_MODULE_5__["WhyusComponent"],
+                _templates_home_home_component__WEBPACK_IMPORTED_MODULE_6__["HomeComponent"],
+                _templates_integration_integration_component__WEBPACK_IMPORTED_MODULE_7__["IntegrationComponent"],
+                _templates_documentation_documentation_component__WEBPACK_IMPORTED_MODULE_8__["DocumentationComponent"],
+                _templates_users_users_component__WEBPACK_IMPORTED_MODULE_9__["UsersComponent"],
                 _templates_navigation_navigation_component__WEBPACK_IMPORTED_MODULE_10__["NavigationComponent"],
                 _templates_kpis_kpis_component__WEBPACK_IMPORTED_MODULE_11__["KpisComponent"]
             ],
             imports: [
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClientModule"],
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"]
             ],
-            providers: [],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"]]
+            providers: [
+                _services_httprequest_service__WEBPACK_IMPORTED_MODULE_12__["httprequestService"]
+            ],
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
