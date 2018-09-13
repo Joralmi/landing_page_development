@@ -105,7 +105,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<section id='documentation' class='pt90 pb90 bg-faded'>\n    <div class=\"container bg-faded\">\n\n        <!-- <h6 class=\"text-dark-gray text-center\">Have a look on our documentation</h6> -->\n        <h3 class=\"text-center title-font mb90\">Learn more</h3>\n\n        <div class=\"text-center\">\n          <a href=\"https://github.com/vicinityh2020\">\n            <img src=\"./assets/images/vcnt-github-logo.png\" alt=\"\" width=\"100\">\n            <img src=\"./assets/images/vcnt-github.png\" alt=\"\" width=\"300\">\n          </a>\n        </div>\n\n    </div>\n</section>\n"
+module.exports = "<section id='documentation' class='pt90 pb90 bg-faded'>\n    <div class=\"container bg-faded\">\n\n        <!-- <h6 class=\"text-dark-gray text-center\">Have a look on our documentation</h6> -->\n        <h3 class=\"text-center title-font mb90\">Learn more</h3>\n\n        <!-- Align horizontally -->\n          <div [hidden]=\"!visible\" class=\"row mb40 wow fadeInUp\" data-wow-delay=\".25s\">\n            <div class=\"col-lg-2\">\n            </div>\n            <div class=\"col-lg-4\">\n              <img src=\"./assets/images/vcnt-github-logo.png\" alt=\"\" width=\"70\">\n              <img src=\"./assets/images/vcnt-github.png\" alt=\"\" width=\"220\">\n            </div>\n            <div class=\"col-lg-2\">\n            </div>\n            <div class=\"col-lg-4\">\n              <a href=\"https://github.com/vicinityh2020\" class=\"btn btn-outline-primary btn-lg\">GitHub</a>\n            </div>\n            <div class=\"col-lg-2\">\n            </div>\n        </div>\n\n        <!-- Align vertically -->\n        <div [hidden]=\"visible\" class=\"wow fadeInUp\" data-wow-delay=\".25s\">\n          <div class=\"text-center\">\n            <img src=\"./assets/images/vcnt-github-logo.png\" alt=\"\" width=\"80\">\n            <img src=\"./assets/images/vcnt-github.png\" alt=\"\" width=\"250\">\n          </div>\n          <div class=\"text-center\">\n            <a href=\"https://github.com/vicinityh2020\" class=\"btn btn-outline-primary btn-lg\">GitHub</a>\n          </div>\n        </div>\n\n    </div>\n</section>\n"
 
 /***/ }),
 
@@ -132,9 +132,23 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 var DocumentationComponent = /** @class */ (function () {
     function DocumentationComponent() {
+        this.visible = false;
+        this.breakpoint = 1000;
     }
     DocumentationComponent.prototype.ngOnInit = function () {
+        this.innerWidth = window.innerWidth;
+        this.visible = this.innerWidth > this.breakpoint;
     };
+    DocumentationComponent.prototype.onResize = function (event) {
+        this.innerWidth = window.innerWidth;
+        this.visible = this.innerWidth > this.breakpoint;
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["HostListener"])('window:resize', ['$event']),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", void 0)
+    ], DocumentationComponent.prototype, "onResize", null);
     DocumentationComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-documentation',
@@ -294,7 +308,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<section id='integration' class='pt90 pb50 bg-faded'>\n    <div class='container bg-faded'>\n\n        <!-- <h6 class='text-dark-gray text-center'>14 Days free trail. No credit card required.</h6> -->\n        <h3 class='text-center title-font mb50'>Let’s get started</h3>\n\n        <a href=\"https://vicinity-get-started.readthedocs.io/\"><img src=\"./assets/images/vcnt-readthedocs.png\" alt=\"\" class=\"img-fluid center-img\" width=\"300\"></a>\n\n    </div>\n</section>\n"
+module.exports = "<section id='integration' class='pt90 pb50 bg-faded'>\n    <div class='container bg-faded'>\n\n      <!-- <h6 class='text-dark-gray text-center'>14 Days free trail. No credit card required.</h6> -->\n      <h3 class='text-center title-font mb50'>Let’s get started</h3>\n\n      <!-- Align horizontally -->\n      <div  [hidden]=\"!visible\" class=\"row mb40 wow fadeInUp\" data-wow-delay=\".25s\">\n        <div class=\"col-lg-2\">\n        </div>\n        <div class=\"col-lg-4\">\n          <img src=\"./assets/images/vcnt-readthedocs.png\" alt=\"\" class=\"img-fluid center-img\" width=\"200\">\n        </div>\n        <div class=\"col-lg-2\">\n        </div>\n        <div class=\"col-lg-4\">\n          <br><br>\n          <a href=\"https://vicinity-get-started.readthedocs.io/\" class=\"btn btn-outline-primary btn-lg\">ReadDocs</a>\n        </div>\n        <div class=\"col-lg-2\">\n        </div>\n      </div>\n\n      <!-- Align vertically -->\n      <div [hidden]=\"visible\" class=\"wow fadeInUp\" data-wow-delay=\".25s\">\n        <img src=\"./assets/images/vcnt-readthedocs.png\" alt=\"\" class=\"img-fluid center-img\" width=\"250\">\n        <div class=\"text-center\">\n          <a href=\"https://vicinity-get-started.readthedocs.io/\" class=\"btn btn-outline-primary btn-lg\">ReadDocs</a>\n        </div>\n      </div>\n\n    </div>\n</section>\n"
 
 /***/ }),
 
@@ -321,9 +335,23 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 var IntegrationComponent = /** @class */ (function () {
     function IntegrationComponent() {
+        this.visible = false;
+        this.breakpoint = 1000;
     }
     IntegrationComponent.prototype.ngOnInit = function () {
+        this.innerWidth = window.innerWidth;
+        this.visible = this.innerWidth > this.breakpoint;
     };
+    IntegrationComponent.prototype.onResize = function (event) {
+        this.innerWidth = window.innerWidth;
+        this.visible = this.innerWidth > this.breakpoint;
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["HostListener"])('window:resize', ['$event']),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", void 0)
+    ], IntegrationComponent.prototype, "onResize", null);
     IntegrationComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-integration',
@@ -609,7 +637,7 @@ var WhyusComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".to-bottom{\n  position: absolute;\n  bottom: 0;\n}\n\n.to-front{\n  z-index: 1000;\n}\n\n.footer-custom{\n  padding-top: 50px;\n  padding-bottom: 30px;\n  background-color: #fff;\n}\n"
+module.exports = ".to-bottom{\n  position: absolute;\n  bottom: 0;\n}\n\n.to-front{\n  z-index: 1000;\n}\n\n.footer-custom{\n  padding-top: 50px;\n  padding-bottom: 30px;\n  background-color: #fff;\n}\n\n.vertical-center {\n  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */\n  min-height: 100vh; /* These two lines are counted as one :-)       */\n\n  display: flex;\n  align-items: center;\n}\n"
 
 /***/ }),
 
