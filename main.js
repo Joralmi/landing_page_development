@@ -420,7 +420,7 @@ var KpisComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "@media (max-width: 1000px) {\n  /* CSS that should be displayed if width is equal to or less than 800px goes here */\n  img {\n      width: 40px;\n  }\n}\n"
 
 /***/ }),
 
